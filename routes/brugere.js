@@ -25,7 +25,7 @@ router.post('/',(req, res) => {
         if (err){
             res.render('brugere/nye',{
                 bruger: bruger,
-                errorMessage: 'Fejl i oprettelsen af bruger'
+                fejlMeddelse: 'Fejl i oprettelsen af bruger'
             })
         } else {
             //res.redirect(`brugere/${nyBruger.id}`)
