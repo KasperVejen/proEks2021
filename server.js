@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== 'production'){
 //extentions //
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser')
 const app = express();
 
 //connection med database ved MongoDB//
@@ -19,13 +20,10 @@ db.once('open', () => console.log('Der er forbindelse til Mongoose'))
 //connection med database ved MongoDB//
 //extentions //
 
-
 //Router//
 const indexRouter = require('./routes/index')
 const brugereRouter = require('./routes/brugere')
 //Router//
-
-
 
 //app instillinger//
 app.set('view engine', 'ejs');
@@ -33,6 +31,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
 app.use('/', indexRouter)
 app.use('/brugere', brugereRouter)
