@@ -1,7 +1,18 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const app = express();
-const PORT = 7070;
+
+//connection med database med MongoDB//
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DATABASE_URL, {
+     useNewUrlParser: true
+});
+const db = mongoose.connect
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Der er forbindelse til Mongoose'))
+
+//connection med database med MongoDB//
+
 
 const indexRouter = require('./routes/index')
 
