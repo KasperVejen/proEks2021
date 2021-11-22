@@ -1,6 +1,4 @@
-const { render } = require('ejs');
 const express = require('express');
-const bruger = require('../models/bruger');
 const router = express.Router();
 const Bruger = require('../models/bruger')
 
@@ -17,21 +15,21 @@ router.get('/nye',(req, res) => {
 //Nye bruger//
 
 //Opret ny bruger//
-router.post('/',(req, res) => {
+router.post('/', async (req, res) => {
     const bruger = new Bruger({ //hvorfor virker dette ikke?
         name: req.body.name
     })
-    bruger.save((err, nyBruger) => {
-        if (err){
-            res.render('brugere/nye',{
-                bruger: bruger,
-                fejlMeddelse: 'Fejl i oprettelsen af bruger'
-            })
-        } else {
-            //res.redirect(`brugere/${nyBruger.id}`)
-            res.redirect('brugere')
-        }
-    })
+    try{
+        const nyBruger = await bruger.save()
+        //res.redirect(`brugere/${nyBruger.id}`)
+        res.redirect('brugere')
+
+    } catch{
+        res.render('brugere/nye',{
+            bruger: bruger,
+            errorMessage: 'Fejl i oprettelsen af bruger'
+        })
+    }
 });
 
 
