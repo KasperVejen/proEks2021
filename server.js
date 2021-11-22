@@ -17,12 +17,15 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Der er forbindelse til Mongoose'))
 //connection med database ved MongoDB//
-
 //extentions //
+
 
 //Router//
 const indexRouter = require('./routes/index')
+const brugereRouter = require('./routes/brugere')
 //Router//
+
+
 
 //app instillinger//
 app.set('view engine', 'ejs');
@@ -32,6 +35,7 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 
 app.use('/', indexRouter)
+app.use('/brugere', brugereRouter)
 
 app.listen(process.env.PORT || 7070)
 //app instillinger//

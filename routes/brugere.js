@@ -9,8 +9,8 @@ router.get('/', (req, res)=>{
 //alle brugere//
 
 //Nye bruger//
-router.get('/ny',(req, res) =>{
-    res.render('brugere/new')
+router.get('/nye',(req, res) =>{
+    res.render('brugere/nye')
 });
 //Nye bruger//
 
