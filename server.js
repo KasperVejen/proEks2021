@@ -23,6 +23,7 @@ db.once('open', () => console.log('Der er forbindelse til Mongoose'))
 //Router//
 const indexRouter = require('./routes/index')
 const brugereRouter = require('./routes/brugere')
+const vareRouter = require('./routes/vare')
 //Router//
 
 //app instillinger//
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
 app.use('/', indexRouter)
 app.use('/brugere', brugereRouter)
+app.use('/vare', vareRouter)
 
 app.listen(process.env.PORT || 7070)
 //app instillinger//
