@@ -3,7 +3,13 @@ const router = express.Router();
 const Bruger = require('../models/bruger')
 
 //alle brugere//
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    try{
+        const brugere = await Bruger.find({})
+        res.render('brugere/index', { brugere: brugere})
+    }catch{
+        res.redirect('/')
+    }
     res.render('brugere/index')
 });
 //alle brugere//
