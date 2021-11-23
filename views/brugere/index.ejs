@@ -1,1 +1,11 @@
-alle brugere
+<h2>Søg i alle brugere</h2>
+
+<form action="/brugere" method="GET">
+    <label> Navn </label>
+    <input type="text" name="name">
+    <button type="submit">Søg</button>
+</form>
+<br>
+<% brugere.forEach(brugere => { %> 
+    <div> <%= brugere.name %> </div>
+<% }) %>

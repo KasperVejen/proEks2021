@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const Bruger = require('../models/bruger')
+const Brugerdb = require('../models/bruger')
 
 //alle brugere//
 router.get('/', async (req, res) => {
     try{
-        const brugere = await Bruger.find({})
+        const brugere = await Brugerdb.find({})
         res.render('brugere/index', { brugere: brugere})
     }catch{
         res.redirect('/')
     }
-    res.render('brugere/index')
+    
 });
 //alle brugere//
 
 //Nye bruger//
 router.get('/nye',(req, res) => {
-    res.render('brugere/nye', { bruger: new Bruger() })
+    res.render('brugere/nye', { bruger: new Brugerdb() })
 });
 //Nye bruger//
 
 //Opret ny bruger//
 router.post('/', async (req, res) => {
-    const bruger = new Bruger({ //hvorfor virker dette ikke?
-        name: req.body.name
-    })
+    const bruger = new Brugerdb({
+            name: req.body.name
+    });
     try{
         const nyBruger = await bruger.save()
         //res.redirect(`brugere/${nyBruger.id}`)
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
         })
     }
 });
-
+//Opret ny bruger//
 
 
 module.exports = router ;
