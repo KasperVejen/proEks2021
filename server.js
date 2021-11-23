@@ -3,11 +3,13 @@ if (process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
 }
 
+
 //extentions //
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser')
 const app = express();
+
 
 //connection med database ved MongoDB//
 const mongoose = require('mongoose');
@@ -18,13 +20,16 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Der er forbindelse til Mongoose'))
 //connection med database ved MongoDB//
+
 //extentions //
 
 //Router//
 const indexRouter = require('./routes/index')
 const brugereRouter = require('./routes/brugere')
-const vareRouter = require('./routes/vare')
+const varerRouter = require('./routes/varer')
 //Router//
+
+
 
 //app instillinger//
 app.set('view engine', 'ejs');
@@ -34,9 +39,12 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false}));
 
+
+//router use//
 app.use('/', indexRouter)
 app.use('/brugere', brugereRouter)
-app.use('/vare', vareRouter)
+app.use('/vare', varerRouter)
+
 
 app.listen(process.env.PORT || 7070)
 //app instillinger//

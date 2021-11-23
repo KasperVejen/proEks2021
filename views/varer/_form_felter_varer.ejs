@@ -1,0 +1,35 @@
+<label>Title</label>
+    <input type="text" name="title" value="<%= vare.title %>"> 
+
+<label>Pris</label>
+    <input type="text" name="pris" value="<%= vare.pris %>"> 
+
+<label>Oprettelses dato</label>
+    <input type="text" name="oprettelsesDato" value="<%= vare.oprettelsesDato %>"> 
+
+
+
+
+<label>Bruger</label>
+    <select name="bruger">
+        <% brugere.forEach(bruger => { %> 
+            <% if (bruger.id == vare.bruger){ %> 
+                <option selected label="<%= bruger.name %> " value="<%= bruger.id %> ">
+            <% } else {%> 
+                <option label="<%= bruger.name %> " value="<%= bruger.id %> ">
+            <% } %> 
+        <% }) %> 
+    </select>
+
+
+
+
+
+
+
+
+<label>Biled</label>
+    <input type="text" name=" vareBiled" value="<%= vare.vareBiled %>"> 
+
+<label>Beskrivelse</label>
+    <input type="text" name="beskrivelse" value="<%= vare.beskrivelse %>"> 

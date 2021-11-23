@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const VareDB = require('../models/vare')
+const VarerDB = require('../models/vare')
 
-//alle vare//
+//alle varer//
 router.get('/', async (req, res) => {
-    res.send('alle vare')
+    res.send('alle varer')
 });
-//alle vare//
+//alle varer//
 
 
-//Nye vare//
+//Nye varer//
 router.get('/nye',(req, res) => {
-    res.send('nye vare')
+    res.send('nye varer')
 });
-//Nye vare//
+//Nye varer//
 
 
 //Opret ny vare//
